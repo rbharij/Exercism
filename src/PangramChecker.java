@@ -32,7 +32,7 @@ public class PangramChecker {
         // Create an Array to hold the letters in the alphabet
         String myStringArray[];
 
-        
+
 
         //The text is not a Pangram
         return false;
