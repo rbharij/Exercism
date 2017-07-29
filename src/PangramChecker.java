@@ -1,3 +1,5 @@
+import sun.font.TrueTypeFont;
+
 public class PangramChecker {
     public boolean isPangram(String s) {
 
@@ -26,20 +28,21 @@ public class PangramChecker {
         return true;
     }
 
-
     public boolean isTheStringAPangram(String txt){
-        // Method to determine if the text is a Pangram
         // Create an Array to hold the letters in the alphabet
-        String myStringArray[];
-
-
-
-        //The text is not a Pangram
-        return false;
-        //the Text is a Pangram
+        String[] myStringArray = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+        //A flag
+        boolean isPangramFlag;
+        isPangramFlag = false;
+        //Check if each letter in the array is present in the passed in text
+        for (int i = 0;  myStringArray.length; i++)
+        {
+            // Check if the current letter is within the string
+            if (txt.indexOf(myStringArray[i]) > (0)) {
+                System.out.print("Character " + myStringArray[i] + " found");
+            } else {
+                //The letter was not found so don't continue
+            }
+        }
+        return isPangramFlag;
     }
-
-
-
-
-}
