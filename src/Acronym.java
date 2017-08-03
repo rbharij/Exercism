@@ -1,22 +1,31 @@
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class Acronym {
 
-    String TexttoCheck = "";
+    private String phrase;
 
-    public Acronym(String Phrase) {
-        //Replace any hyphens with spaces
-        Phrase = Phrase.replaceAll("-", " ");
-        //Split the phrase into an Array by finding the spaces
-        String[] letters = Phrase.split(" ");
-        // Extract the first letter of each word and add that to the return phrase
-        for(int i=0;i<letters.length;i++){
-            //Get the first letter
-            String A = letters[i].substring(0,1);
-            TexttoCheck = TexttoCheck + A;
-        }
+    public Acronym(String phrase) {
+        this.phrase = phrase;
     }
 
     public String get() {
+        //Replace any hyphens with spaces
+        phrase = phrase.replaceAll("-", " ");
+        //Split the phrase into an Array by finding the spaces
+        String[] words = phrase.split(" ");
+        // Extract the first letter of each word and add that to the return phrase
+//        Arrays.asList(words)
+//                .stream()
+//                .map(w -> w.charAt(0))
+//                .collect(Collectors.)
+        StringBuilder sb = new StringBuilder();
+        for (String word : words) {
+            //Get the first letter
+            sb.append(word.charAt(0));
+        }
 
-        return TexttoCheck.toUpperCase();
+        return sb.toString().toUpperCase();
     }
+
 }
