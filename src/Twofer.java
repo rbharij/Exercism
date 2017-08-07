@@ -1,11 +1,13 @@
+
 public class Twofer {
-
-
     public String twofer(String input) {
 
-        if (input == null)
+        if (input == null) {
             return "One for you, one for me.";
-        else
+        } else {
             return "One for " + input + ", one for me.";
+        }
     }
-}
+
+    }
+
