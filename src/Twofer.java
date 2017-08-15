@@ -8,6 +8,5 @@ public class Twofer {
             return "One for " + input + ", one for me.";
         }
     }
-
-    }
+}
 
