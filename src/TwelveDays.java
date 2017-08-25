@@ -39,7 +39,7 @@ public class TwelveDays {
                 if (num == 12) {
                     Song = Song + VerseArray[num];
                 } else {
-
+    
                     Song = Song + VerseArray[num] + "\n";
                 }
             }
