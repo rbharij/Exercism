@@ -1,20 +1,12 @@
-import com.sun.tools.javac.util.Convert;
-import sun.plugin.liveconnect.ReplaceMethod;
-import sun.text.normalizer.ReplaceableString;
 
 public class CreditCard {
 
-    public static String check(String s) {
+    int checkDigit;
+    Integer ccCalculation[] = new Integer [16];
 
-        int checkDigit;
-
-        Integer ccCalculation[] = new Integer [16];
-        //Store all the numbers into an array
-        for(int n=0;n<16;n++){
-            //Get the first number and place it into the array
-            ccCalculation[n] = Character.getNumericValue(s.charAt(n));
-            //System.out.println(ccCalculation[n]);
-        }
+    public String check(String s) {
+        //Move the String into an Array
+        moveToArray(s);
         //Get the Check Digit (last Number in the Sequence)
         checkDigit = ccCalculation[15];
         //System.out.println("Check Digit is: " + checkDigit);
@@ -52,4 +44,19 @@ public class CreditCard {
         System.out.println(validNum);
         return validNum;
     }
+
+    public  void moveToArray(String s){
+        //Remove all Spaces and dashes
+        s= s.replace(" ", "");
+        s= s.replace("-", "");
+        //Store all the numbers into an array
+        for(int n=0;n<16;n++){
+            //Get the first number and place it into the array
+            ccCalculation[n] = Character.getNumericValue(s.charAt(n));
+            //System.out.println(ccCalculation[n]);
+        }
+
+    }
+
 }
+

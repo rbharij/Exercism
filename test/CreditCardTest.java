@@ -10,7 +10,7 @@ public class CreditCardTest {
 
     @Test
     public void CCTest() {
-        String input = "4578423013769219";
+        String input = "4556737586899855";
         assertEquals("Valid Credit Card", CreditCard.check(input));
     }
 
