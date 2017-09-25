@@ -1,21 +1,31 @@
 
 public class CreditCard {
 
-    int checkDigit;
-    Integer ccCalculation[] = new Integer [16];
+    static int checkDigit;
+    static Integer ccCalculation[] = new Integer [16];
 
-    public String check(String s) {
-        //Move the String into an Array
+    public static String check(String s) {
         moveToArray(s);
-        //Get the Check Digit (last Number in the Sequence)
         checkDigit = ccCalculation[15];
-        //System.out.println("Check Digit is: " + checkDigit);
-        //Starting with the first digit, multiple every second digit by 2
-        for (int n=0;n<ccCalculation.length;n++){
-            ccCalculation[n] = (ccCalculation[n] *2 );
-            n++;
+        timesTwo();
+        theHairyPart();
+        int finalNum = accumulate() +checkDigit;
+        return isMultipleOfTen(finalNum) ? "Valid Credit Card" :  "Invalid Credit Card";
+    }
+
+    private static boolean isMultipleOfTen(int finalNum) {
+        return finalNum%10==0;
+    }
+
+    private static int accumulate() {
+        int totalOfNumbers = 0;
+        for (int n=0;n<ccCalculation.length-1;n++){
+            totalOfNumbers = (totalOfNumbers + ccCalculation[n]);
         }
-        //Every time you have a two-digit number, just add those digits together for a one-digit result
+        return totalOfNumbers;
+    }
+
+    private static void theHairyPart() {
         for (int n=0; n<ccCalculation.length;n++){
             if (ccCalculation[n]>9) {
                 //Add the two numbers together
@@ -26,26 +36,15 @@ public class CreditCard {
                 //System.out.println(ccCalculation[n]);
             }
         }
-        //Add all the numbers together
-        int totalOfNumbers = 0;
-        for (int n=0;n<ccCalculation.length-1;n++){
-            totalOfNumbers = (totalOfNumbers + ccCalculation[n]);
-        }
-        //System.out.println("The total is:" + totalOfNumbers);
-        //When this number is added to the check digit, then the result must be an even multiple of 10 and therefore a valid number
-        int finalNum = totalOfNumbers+checkDigit;
-        String validNum = "";
-        if (finalNum%10==0) {
-            //System.out.println(finalNum);
-            validNum = "Valid Credit Card";
-        } else {
-            validNum = "Invalid Credit Card";
-        }
-        System.out.println(validNum);
-        return validNum;
     }
 
-    public  void moveToArray(String s){
+    private static void timesTwo() {
+        for (int n=0;n<ccCalculation.length;n+=2){
+            ccCalculation[n] = (ccCalculation[n] *2 );
+        }
+    }
+
+    public static void moveToArray(String s){
         //Remove all Spaces and dashes
         s= s.replace(" ", "");
         s= s.replace("-", "");
